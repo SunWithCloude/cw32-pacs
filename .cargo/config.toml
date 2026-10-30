@@ -1,0 +1,7 @@
+# thumb* 目标默认 rust-lld;link.x 会 INCLUDE 本 crate 的 memory.x
+# 与 rt feature 生成的 device.x。此配置对整个 workspace 生效
+# (cargo 从 cwd 向上合并 config,成员目录内构建同样命中根配置)。
+[target.thumbv6m-none-eabi]
+rustflags = [
+    "-C", "link-arg=-Tlink.x",
+]
