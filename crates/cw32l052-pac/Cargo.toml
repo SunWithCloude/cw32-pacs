@@ -13,9 +13,16 @@ categories = ["embedded", "hardware-support", "no-std"]
 keywords = ["cw32", "cw32l052", "pac", "register", "cortex-m"]
 license = "MIT OR Apache-2.0"
 readme = "README.md"
+repository = "https://github.com/SunWithCloude/cw32-pacs"
+documentation = "https://docs.rs/cw32l052-pac"
 
 [dependencies]
 cortex-m-rt = { version = "0.7", optional = true, features = ["device"] }
 
 [features]
 rt = ["dep:cortex-m-rt"]
+
+[package.metadata.docs.rs]
+# 嵌入式 crate：文档按 thumbv6m 目标 + 全 feature(rt) 构建
+default-target = "thumbv6m-none-eabi"
+all-features = true
