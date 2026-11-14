@@ -24,16 +24,30 @@
 
 "实机验证"列指该家族 PAC 编译出的 blink 示例在真实板上点灯：生成时已逐寄存器核对厂商头文件布局（`tests/layout.rs` 固化），但 10 个家族中目前只有手头有板的家族能点亮。有板子欢迎 PR 更新矩阵。
 
+## crates.io 状态（2026-11-05）
+
+已发布到 crates.io 的家族（`cargo add <crate>` 即可）：
+
+`cw32f003-pac` · `cw32f020-pac` · `cw32l011-pac` · `cw32l031-pac` ·
+`cw32l052-pac` · `cw32l083-pac` · `cw32r031-pac` · `cw32w031-pac`
+
+两个名字在 crates.io 上**已被第三方占用**，因此这两族目前只能从 git 引用：
+
+| crate | 占用者 | 现状 |
+|---|---|---|
+| `cw32f030-pac` | `cw32-rust`（0.1.1，2026-06） | 待定：改名（如 `cw32f030-pac-um`）或联系 owner |
+| `cw32l010-pac` | `Lioyae`（0.1.0，2026-06） | 同上 |
+
 ## 用法
 
 ```toml
 [dependencies]
-cw32f030-pac = "0.1"
+cw32f003-pac = "0.1"
 ```
 
 ```rust
 #![no_std]
-use cw32f030_pac::Peripherals;
+use cw32f003_pac::Peripherals;
 
 let p = unsafe { Peripherals::steal() };
 p.SYSCTRL.ahben().modify(|_, w| w.gpio_cen().set_bit());

@@ -1,6 +1,6 @@
 //! 生成产物回归:布局尺寸与中断表密度(生成时自动核对)。
 
-use cw32l010_pac::*;
+use cw32l010_pac_um::*;
 
 #[test]
 fn block_sizes_match_vendor_headers() {
